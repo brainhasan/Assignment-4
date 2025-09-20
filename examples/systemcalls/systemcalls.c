@@ -17,7 +17,12 @@ bool do_system(const char *cmd)
  *   or false() if it returned a failure
 */
 
-    return true;
+    int res = system(cmd);
+    if (res == 0)
+    {
+	    return true;
+    }
+    return false;
 }
 
 /**
@@ -58,10 +63,30 @@ bool do_exec(int count, ...)
  *   as second argument to the execv() command.
  *
 */
+    int pid = fork();
+    if (pid == -1)
+    {
+	    return false;
+    }
+	
+    int status;
+    if (pid > 0)
+    {
+	    wait(&status);
+    }
+    else
+    {
+	    execv(command[0], command);
+	    abort();
+    }
 
     va_end(args);
-
-    return true;
+	
+    if (status == 0)
+    {
+	    return true;
+    }
+    return false;
 }
 
 /**
@@ -92,6 +117,36 @@ bool do_exec_redirect(const char *outputfile, int count, ...)
  *   The rest of the behaviour is same as do_exec()
  *
 */
+    int fd = open(outputfile, O_WRONLY | O_TRUNC | O_CREAT, 0644);
+    if (fd < 0)
+    {
+	    perror("open");
+	    abort();
+    }
+
+    int pid = fork();
+    if (pid < 0)
+    {
+	    perror("fork");
+	    abort();
+    }
+
+    if (pid == 0)
+    {
+	    if (dup2(fd, 1) < 0)
+	    {
+		    perror("dup2");
+		    abort();
+	    }
+	    close(fd);
+	    execv(command[0], command);
+	    abort();
+    }
+    else 
+    {
+	    close(fd);
+	    wait(NULL);
+    }
 
     va_end(args);
 
