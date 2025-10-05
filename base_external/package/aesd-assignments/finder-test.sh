@@ -1,5 +1,6 @@
 #!/bin/sh
-
+# Tester script for assignment 1 and assignment 2
+# Author: Siddhant Jajoo
 
 set -e
 set -u
@@ -47,6 +48,9 @@ then
 		exit 1
 	fi
 fi
+#echo "Removing the old writer utility and compiling as a native application"
+#make clean
+#make
 
 for i in $( seq 1 $NUMFILES)
 do
@@ -54,7 +58,7 @@ do
 done
 
 OUTPUTSTRING=$(/usr/bin/finder.sh "$WRITEDIR" "$WRITESTR")
-
+echo ${OUTPUTSTRING} > /tmp/assignment4-result.txt
 # remove temporary directories
 rm -rf /tmp/aeld-data
 

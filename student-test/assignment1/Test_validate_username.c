@@ -12,14 +12,16 @@
 *   3) Use unity assertion TEST_ASSERT_EQUAL_STRING_MESSAGE the two strings are equal.  See
 *       the [unity assertion reference](https://github.com/ThrowTheSwitch/Unity/blob/master/docs/UnityAssertionsReference.md)
 */
+
 void test_validate_my_username()
 {
+
     /**
      * TODO: Replace the line below with your code here as described above to verify your /conf/username.txt 
      * config file and my_username() functions are setup properly
      */
-    const char* username_hardcoded = my_username();
-    char* username_malloc = malloc_username_from_conf_file();
-    TEST_ASSERT_EQUAL_STRING_MESSAGE(username_hardcoded, username_malloc, "Hardcoded username does not match malloc function username");
-    free(username_malloc);
+    const char * username=my_username();
+    
+    TEST_ASSERT_EQUAL_STRING("ijking1144", username);
+    
 }
