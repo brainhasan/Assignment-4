@@ -11,7 +11,7 @@ inherit update-rc.d
 
 SRC_URI = "git://github.com/brainhasan/Assignment-4.git;protocol=ssh;branch=main"
 
-SRCREV = "AUTOINC"
+SRCREV = "42720b242104d5505741eab9e0897ce1748409ab"
 
 # This sets your staging directory based on WORKDIR, where WORKDIR is defined at 
 # https://docs.yoctoproject.org/ref-manual/variables.html?highlight=workdir#term-WORKDIR
