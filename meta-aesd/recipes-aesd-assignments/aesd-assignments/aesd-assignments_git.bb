@@ -2,6 +2,7 @@
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
+
 # Git repo for AESD assignments
 SRC_URI = "git://github.com/brainhasan/Assignment-4.git;protocol=https;branch=master"
 
@@ -19,7 +20,8 @@ FILES:${PN} += "${bindir}/aesdsocket-start-stop.sh"
 
 # TODO: customize these as necessary for any libraries you need for your application
 # (and remove comment)
-TARGET_LDFLAGS += "-pthread -lrt"
+TARGET_LDFLAGS = "-Wl,--hash-style=gnu -pthread -lrt"
+export TARGET_LDFLAGS
 INITSCRIPT_PACKAGES = "${PN}"
 INITSCRIPT_NAME:${PN}="aesdsocket-start-stop.sh"
 
