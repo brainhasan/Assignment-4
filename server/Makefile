@@ -1,22 +1,11 @@
-TARGET := aesdsocket
-SRCS   := aesdsocket.c
-OBJS   := $(SRCS:.c=.o)
+CC ?= $(CROSS_COMPILE)gcc
+CFLAGS += -Wall -Werror -g
+LDFLAGS += -pthread -lrt
 
-CC     ?= gcc
-CFLAGS := -Wall
+all: aesdsocket
 
-.PHONY: all clean
-
-all: $(TARGET)
-
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $^
-
-%.o: %.c
-	@echo "Compiling $<"
-	$(CC) $(CFLAGS) -c -o $@ $<
+aesdsocket: aesdsocket.c
+	$(CC) $(CFLAGS) $(LDFLAGS) -o aesdsocket aesdsocket.c
 
 clean:
-	@echo "Cleaning up..."
-	@rm -f *.o $(TARGET)
-
+	rm -f aesdsocket *.o
