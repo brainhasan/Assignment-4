@@ -1,5 +1,6 @@
 CC      ?= $(CROSS_COMPILE)gcc
 CFLAGS  ?= -Wall -Wextra -g
+LDFLAGS ?=  # Leave empty, overridden by Yocto
 TARGET  ?= aesdsocket
 SRC     ?= aesdsocket.c
 OBJ     ?= $(SRC:.c=.o)
@@ -9,7 +10,7 @@ OBJ     ?= $(SRC:.c=.o)
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
+	$(CC) $(CFLAGS) $(OBJ) -o $@ $(LDFLAGS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@

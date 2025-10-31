@@ -20,17 +20,18 @@ FILES:${PN} += "${bindir}/aesdsocket-start-stop.sh"
 
 # TODO: customize these as necessary for any libraries you need for your application
 # (and remove comment)
-TARGET_LDFLAGS = "-Wl,--hash-style=gnu -pthread -lrt"
-export TARGET_LDFLAGS
+
+
 INITSCRIPT_PACKAGES = "${PN}"
 INITSCRIPT_NAME:${PN}="aesdsocket-start-stop.sh"
 
 do_configure () {
 	:
 }
+TARGET_LDFLAGS = "-Wl,--hash-style=gnu -pthread -lrt"
 
 do_compile() {
-    oe_runmake CFLAGS="${CFLAGS}" LDFLAGS="${TARGET_LDFLAGS}"
+    oe_runmake LDFLAGS="${TARGET_LDFLAGS}"
 }
 
 
