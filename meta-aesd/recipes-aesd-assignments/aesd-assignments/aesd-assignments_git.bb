@@ -24,6 +24,7 @@ FILES:${PN} += "${bindir}/aesdsocket-start-stop.sh"
 # TODO: customize these as necessary for any libraries you need for your application
 # (and remove comment)
 TARGET_LDFLAGS += "-pthread -lrt"
+EXTRA_OEMAKE = "LDFLAGS='-pthread -lrt'"
 INITSCRIPT_PACKAGES = "${PN}"
 INITSCRIPT_NAME:${PN}="aesdsocket-start-stop.sh"
 
