@@ -1,5 +1,9 @@
+# See https://git.yoctoproject.org/poky/tree/meta/files/common-licenses
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
+
+inherit update-rc.d
+
 
 SRC_URI = "git://github.com/brainhasan/Assignment-4.git;protocol=https;branch=master"
 
