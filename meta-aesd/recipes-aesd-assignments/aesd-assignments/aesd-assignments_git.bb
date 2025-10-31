@@ -6,10 +6,7 @@ inherit update-rc.d
 
 # TODO: Set this  with the path to your assignments rep.  Use ssh protocol and see lecture notes
 # about how to setup ssh-agent for passwordless access
-SRC_URI = "git@github.com:brainhasan/Assignment-4.git"
-
-PV = "1.0+git${SRCPV}"
-# TODO: set to reference a specific commit hash in your assignment repo
+SRC_URI = "ssh://git@github.com/brainhasan/Assignment-4.git;branch=main"
 SRCREV = "${AUTOREV}"
 
 
