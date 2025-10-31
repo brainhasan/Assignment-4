@@ -29,9 +29,10 @@ do_configure () {
 	:
 }
 
-do_compile () {
-	oe_runmake
+do_compile() {
+    oe_runmake CFLAGS="${CFLAGS}" LDFLAGS="${TARGET_LDFLAGS}"
 }
+
 
 do_install () {
 	# TODO: Install your binaries/scripts here.
