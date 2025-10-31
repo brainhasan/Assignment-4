@@ -4,16 +4,12 @@ TARGET  ?= aesdsocket
 SRC     ?= aesdsocket.c
 OBJ     ?= $(SRC:.c=.o)
 
-# Use the flags Yocto provides
-CFLAGS  += $(TARGET_CFLAGS)
-LDFLAGS += $(TARGET_LDFLAGS)
-
 .PHONY: all clean
 
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) $^ -o $@ $(INCLUDES) $(LDFLAGS)
+	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
