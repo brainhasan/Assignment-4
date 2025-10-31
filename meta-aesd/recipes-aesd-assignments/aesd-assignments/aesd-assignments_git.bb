@@ -6,8 +6,9 @@ inherit update-rc.d
 
 # TODO: Set this  with the path to your assignments rep.  Use ssh protocol and see lecture notes
 # about how to setup ssh-agent for passwordless access
-SRC_URI = "ssh://git@github.com/brainhasan/Assignment-4.git;branch=main"
+SRC_URI = "git://github.com/brainhasan/Assignment-4.git;protocol=ssh;branch=main"
 SRCREV = "${AUTOREV}"
+
 
 
 # This sets your staging directory based on WORKDIR, where WORKDIR is defined at 
