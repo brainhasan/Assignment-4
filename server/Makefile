@@ -3,7 +3,9 @@ CFLAGS  ?= -Wall -Wextra -g
 TARGET  ?= aesdsocket
 SRC     ?= aesdsocket.c
 OBJ     ?= $(SRC:.c=.o)
-LDFLAGS ?= -lpthread -lrt
+
+LDFLAGS += -Wl,--hash-style=gnu
+
 
 .PHONY: all clean
 
