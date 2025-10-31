@@ -3,7 +3,7 @@ CFLAGS  ?= -Wall -Wextra -g
 TARGET  ?= aesdsocket
 SRC     ?= aesdsocket.c
 OBJ     ?= $(SRC:.c=.o)
-LDFLAGS ?= -lpthread -lrt
+LDFLAGS = -pthread -lrt
 
 .PHONY: all clean
 
@@ -11,7 +11,8 @@ all: $(TARGET)
 
 $(TARGET): $(OBJ)
 	
-	$(CC) $(CFLAGS) $^ -o $@ $(INCLUDES) $(TARGET_LDFLAGS)
+	$(CC) $(CFLAGS) $^ -o $@ $(INCLUDES) $(LDFLAGS)
+
 
 
 %.o: %.c
