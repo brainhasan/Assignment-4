@@ -7,7 +7,7 @@ SRC_URI = "git://github.com/brainhasan/Assignment-4.git;protocol=https;branch=ma
 
 # Version info
 PV = "1.0+git${SRCPV}"
-SRCREV = "bb00d0752c0eeda3ec72219814760ffd52175b27"
+SRCREV = "${AUTOREV}"
 
 # Directory containing server sources
 S = "${WORKDIR}/git/server"
