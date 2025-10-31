@@ -10,7 +10,9 @@ LDFLAGS ?= -lpthread -lrt
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) $^ -o $@ $(INCLUDES) $(LDFLAGS)
+	
+	$(CC) $(CFLAGS) $^ -o $@ $(INCLUDES) $(TARGET_LDFLAGS)
+
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
